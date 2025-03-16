@@ -201,7 +201,7 @@ The Elasticsearch sink connector (`elastic-sink-all.json`) streams the data to E
 
 ## Automated Setup with steps.sh
 
-We provide a convenient shell script (`steps.sh`) that automates the entire setup process. Here's what it does:
+I provide a convenient shell script (`steps.sh`) that automates the entire setup process. Here's what it does:
 
 ```bash
 #!/bin/bash
@@ -412,10 +412,3 @@ server:
   port: 8080
 ```
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
