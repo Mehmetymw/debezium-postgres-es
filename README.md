@@ -7,34 +7,11 @@ This project demonstrates how to build a robust real-time data pipeline that cap
 The application follows a Domain-Driven Design (DDD) architecture with clean separation of concerns:
 
 ```
-┌─────────────────┐     ┌─────────────┐     ┌─────────────────┐
-│                 │     │             │     │                 │
-│   PostgreSQL    │────▶│    Kafka    │────▶│  Elasticsearch  │
-│                 │     │             │     │                 │
-└─────────────────┘     └─────────────┘     └─────────────────┘
-         │                                          ▲
-         │                                          │
-         │                                          │
-         ▼                                          │
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│                      Go Application                         │
-│                                                             │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
-│  │             │    │             │    │             │     │
-│  │   Domain    │◀──▶│ Application │◀──▶│ Interfaces  │     │
-│  │             │    │             │    │             │     │
-│  └─────────────┘    └─────────────┘    └─────────────┘     │
-│         ▲                  ▲                  ▲            │
-│         │                  │                  │            │
-│         ▼                  ▼                  ▼            │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
-│  │             │    │             │    │             │     │
-│  │Infrastructure│   │   Config    │    │    API      │     │
-│  │             │    │             │    │             │     │
-│  └─────────────┘    └─────────────┘    └─────────────┘     │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+PostgreSQL (Upsert) --> Debezium --> Kafka --> Kafka Connect --> Elasticsearch (GET)
+         ▲                                                        |
+         |                                                        v
+      Go App ------------------------------------------------------
+
 ```
 
 ## Key Features
